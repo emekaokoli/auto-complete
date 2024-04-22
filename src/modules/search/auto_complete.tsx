@@ -33,8 +33,6 @@ const AutoComplete = () => {
   if (isLoading) {
     return <Loading />;
   }
-  console.log({ isLoading, load });
-
 
   return (
     <div className="auto-complete">
