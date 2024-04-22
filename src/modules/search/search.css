@@ -1,0 +1,89 @@
+.auto-complete {
+  position: relative;
+    color:#000;
+
+}
+
+.options {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  z-index: 1;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 0 0 5px 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 4px;
+  align-items: start;
+  width: 100%;
+}
+
+.options li {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.options li:hover {
+  background-color: #f0f0f0;
+  color:#000;
+}
+
+.options li.selected {
+  background-color: #f0f0f0;
+  color:#000;
+}
+
+.options li.loading {
+  padding: 8px 12px;
+  cursor: progress;
+}
+
+.options li:hover {
+  background-color: #f0f0f0;
+  color:#000;
+}
+
+.options li.selected {
+  background-color: #f0f0f0;
+  color:#000;
+}
+
+.options li.disabled {
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+.options li.loading {
+}
+.options li {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.options li.highlighted {
+  background-color: #f0f0f0;
+  color:#000;
+}
+
+.highlight {
+  background-color: yellow;
+}
+.notice{
+  color: #eb0909ff;
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: bold;
+}
