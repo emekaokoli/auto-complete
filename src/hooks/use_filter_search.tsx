@@ -3,50 +3,58 @@ import { useEffect, useState } from "react";
 
 export type FilterSearchProps = {
   inputValue: string;
-  data: OptionProps[]
+  data: readonly OptionProps[]
   setHighlightedIndex: React.Dispatch<React.SetStateAction<number>>
   highlightedIndex: number
-  filteredOptions: OptionProps[]
-  setFilteredOptions: React.Dispatch<React.SetStateAction<OptionProps[]>>
+  filteredOptions: readonly OptionProps[]
+  setFilteredOptions: React.Dispatch<React.SetStateAction<readonly OptionProps[]>>
   setNotice: React.Dispatch<React.SetStateAction<string>>
 };
 
-export function useFilterSearch({ data, inputValue, setHighlightedIndex, highlightedIndex, setFilteredOptions, setNotice }: FilterSearchProps) {
+export function useFilterSearch({
+  data,
+  inputValue,
+  setHighlightedIndex,
+  setFilteredOptions,
+  setNotice,
+}: FilterSearchProps) {
   const [load, setLoad] = useState<boolean>(false);
 
-  // Filter options asynchronously based on input value
   const filterOptions = async () => {
-    const filtered = data.filter(option =>
-      option.value.toLowerCase().includes(inputValue.toLowerCase())
-    );
-    if (filtered.length === 0) {
-      setNotice('Item not found');
-    } else {
-      setNotice('');
+    try {
+      // Simulating asynchronously filter data by 10 seconds
+      setLoad(true)
+      const filtered = data.filter((option) =>
+        option.value.toLowerCase().includes(inputValue.toLowerCase())
+      );
+      setLoad(false);
+      if (filtered.length === 0) {
+        setNotice('Item not found');
+      } else {
+        setNotice('');
+      }
+      setFilteredOptions(filtered);
+      setHighlightedIndex(-1);
+    } catch (error: any) {
+      setNotice('Error filtering options:');
+    } finally {
+      setLoad(false);
     }
-    setFilteredOptions(filtered);
-    setHighlightedIndex(-1);
   };
 
   useEffect(() => {
     let timeout: NodeJS.Timeout;
-    // Simulating asynchronously filter data by 10 seconds
     timeout = setTimeout(() => {
-      setLoad(true)
       filterOptions();
-      setLoad(false)
-    }, 10000)
+    }, 10000);
 
     return () => {
-      clearTimeout(timeout)
-    }
-
+      clearTimeout(timeout);
+    };
   }, [inputValue, data]);
-
   return {
     load,
-    highlightedIndex,
+    setHighlightedIndex,
     setFilteredOptions,
-    setHighlightedIndex
-  }
+  };
 }

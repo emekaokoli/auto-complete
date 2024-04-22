@@ -10,7 +10,7 @@ import { useState } from 'react';
 const AutoComplete = () => {
   const [inputValue, setInputValue] = useState<string>('');
   const [highlightedIndex, setHighlightedIndex] = useState<number>(-1);
-  const [filteredOptions, setFilteredOptions] = useState<OptionProps[]>([]);
+  const [filteredOptions, setFilteredOptions] = useState<readonly OptionProps[]>([]);
   const [notice, setNotice] = useState<string>('');
 
 
@@ -33,6 +33,7 @@ const AutoComplete = () => {
   if (isLoading) {
     return <Loading />;
   }
+  console.log({ isLoading, load });
 
 
   return (

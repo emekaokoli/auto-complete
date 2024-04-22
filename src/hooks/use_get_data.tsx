@@ -3,19 +3,26 @@ import { useEffect, useState } from "react";
 
 
 export function useGetData() {
-  const [data, setData] = useState<OptionProps[]>([]);
+  const [data, setData] = useState<readonly OptionProps[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
+  const fetcher = async () => {
+    try {
+      setLoading(true);
+      // Simulating asynchronous data fetching by using setTimeout (3 seconds)
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      setData(mockData);
+      setLoading(false);
+    } catch (error: any) {
+      console.error('Error fetching data:', error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const getData = () => {
-      // Simulating asynchronous data fetching by using setTimeout 30 seconds
-      setLoading(true);
-      setData(mockData);
-      setLoading(false)
-    }
-    getData()
-  }, [setLoading, mockData])
+    fetcher()
+  }, [])
 
   return {
     isLoading: loading,

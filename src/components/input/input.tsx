@@ -4,8 +4,8 @@ type Props = {
   inputValue: string;
   setInputValue: (value: React.SetStateAction<string>) => void
   setHighlightedIndex: (value: React.SetStateAction<number>) => void
-  setFilteredOptions: (value: React.SetStateAction<OptionProps[]>) => void
-  filteredOptions: OptionProps[]
+  setFilteredOptions: (value: React.SetStateAction<readonly OptionProps[]>) => void
+  filteredOptions: readonly OptionProps[]
   highlightedIndex: number
 }
 

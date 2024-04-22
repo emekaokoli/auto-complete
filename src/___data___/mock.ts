@@ -3,7 +3,7 @@ export type OptionProps = {
   value: string;
 };
 
-export const mockData: OptionProps[] = [
+export const mockData: readonly OptionProps[] = [
   { id: 1, value: 'Apple' },
   { id: 2, value: 'Banana' },
   { id: 3, value: 'Orange' },
