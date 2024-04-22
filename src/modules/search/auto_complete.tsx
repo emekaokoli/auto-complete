@@ -7,7 +7,6 @@ import '@/modules/search/search.css';
 import { useState } from 'react';
 
 
-
 const AutoComplete = () => {
   const [inputValue, setInputValue] = useState<string>('');
   const [highlightedIndex, setHighlightedIndex] = useState<number>(-1);
@@ -30,8 +29,6 @@ const AutoComplete = () => {
     setInputValue(value);
     setFilteredOptions([]);
   };
-
-  console.log({ notice, isLoading, load });
 
   if (isLoading) {
     return <Loading />;

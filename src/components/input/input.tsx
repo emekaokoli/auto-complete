@@ -37,15 +37,6 @@ export const Input = ({
       setFilteredOptions([]);
     }
   };
-  console.log({
-    inputValue,
-    setInputValue,
-    setHighlightedIndex,
-    setFilteredOptions,
-    filteredOptions,
-    highlightedIndex
-});
-  
 
   return (
     <input
